@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventMonitor.Test", "EventMonitor.Test\EventMonitor.Test.csproj", "{DB678C60-0BEA-4863-8CAF-1E6294418BF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventMonitor", "EventMonitor\EventMonitor.csproj", "{2331C9BC-86B4-46F7-A2B8-FC18DB1B9FB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventMonitor.Examples", "EventMonitor.Examples\EventMonitor.Examples.csproj", "{4A31D7A5-2A57-41B2-A181-5D61DE2FD898}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB678C60-0BEA-4863-8CAF-1E6294418BF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB678C60-0BEA-4863-8CAF-1E6294418BF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB678C60-0BEA-4863-8CAF-1E6294418BF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB678C60-0BEA-4863-8CAF-1E6294418BF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2331C9BC-86B4-46F7-A2B8-FC18DB1B9FB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2331C9BC-86B4-46F7-A2B8-FC18DB1B9FB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2331C9BC-86B4-46F7-A2B8-FC18DB1B9FB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2331C9BC-86B4-46F7-A2B8-FC18DB1B9FB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A31D7A5-2A57-41B2-A181-5D61DE2FD898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A31D7A5-2A57-41B2-A181-5D61DE2FD898}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A31D7A5-2A57-41B2-A181-5D61DE2FD898}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A31D7A5-2A57-41B2-A181-5D61DE2FD898}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+EndGlobal
