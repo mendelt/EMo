@@ -28,14 +28,7 @@ namespace EMo
         /// </summary>
         public static bool AreMatch(object parameter, object match)
         {
-            // If both are null they are equal, return true
-            if (parameter == null && match == null) return true;
-
-            // If only parameter is null they are not equal, return false
-            if (parameter == null || match == null) return false;
-
-            // If parameter is not null we can call Equals on it
-            return (parameter.Equals(match));
+            return ReferenceEquals(parameter, match) || (parameter.Equals(match));
         }
     }
 }
