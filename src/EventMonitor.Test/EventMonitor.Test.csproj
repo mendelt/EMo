@@ -59,6 +59,9 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="TestHelpers">
+      <HintPath>..\..\lib\TestHelpers.dll</HintPath>
+    </Reference>
     <Reference Include="xunit, Version=1.1.0.1323, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\xunit.dll</HintPath>
@@ -73,7 +76,6 @@
     <Compile Include="Core\RecordedEventFacts.cs" />
     <Compile Include="EventMonitorFacts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestHelpers\ContextBase.cs" />
     <Compile Include="TestHelpers\EventSource.cs" />
     <Compile Include="EventMonitorContext\WhenRegisteringEventMonitor.cs" />
     <Compile Include="EventMonitorContext\WhenRegisteringEventMonitorOnNullObject.cs" />
