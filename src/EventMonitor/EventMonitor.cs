@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using EMo.Core;
+using WeakDictionary;
 
 namespace EMo
 {
@@ -11,7 +12,7 @@ namespace EMo
     /// </summary>
     public static class EventMonitor
     {
-        private static IDictionary<Object, IList<IEventRecorder>> eventRecorders = new Dictionary<Object, IList<IEventRecorder>>();
+        private static readonly IDictionary<Object, IList<IEventRecorder>> EventRecorders = new WeakDictionary<Object, IList<IEventRecorder>>();
 
         /// <summary>
         /// Starts monitoring events on an object.
@@ -22,17 +23,12 @@ namespace EMo
             if (eventSource == null) throw new ArgumentNullException(string.Format("Error starting event monitoring. eventSource cannot be null."));
             
             // Find all events
-            var recorders = new List<IEventRecorder>();
-
-            foreach (var @event in eventSource.GetType().GetEvents())
-            {
-                recorders.Add(Monitor(eventSource, @event));
-            }
+            var recorders = eventSource.GetType( ).GetEvents( ).Select( @event => Monitor( eventSource, @event ) ).Cast<IEventRecorder>( ).ToList( );
 
             if (!recorders.Any()) throw new InvalidOperationException(string.Format("Error starting event monitoring. Object {0} does not expose any events.", eventSource));
 
-            if (eventRecorders.ContainsKey(eventSource)) eventRecorders.Remove(eventSource);
-            eventRecorders.Add(eventSource, recorders);
+            if (EventRecorders.ContainsKey(eventSource)) EventRecorders.Remove(eventSource);
+            EventRecorders.Add(eventSource, recorders);
 
             return recorders;
         }
@@ -57,9 +53,9 @@ namespace EMo
         /// </summary>
         public static IEnumerable<IEventRecorder> Raised(this object eventSource)
         {
-            if (!eventRecorders.ContainsKey(eventSource)) throw new InvalidOperationException(string.Format("Object {0} is not being monitored for events. Use the Monitor() extension method to start monitoring events.", eventSource));
+            if (!EventRecorders.ContainsKey(eventSource)) throw new InvalidOperationException(string.Format("Object {0} is not being monitored for events. Use the Monitor() extension method to start monitoring events.", eventSource));
 
-            return eventRecorders[eventSource];
+            return EventRecorders[eventSource];
         }
 
         /// <summary>
