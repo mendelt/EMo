@@ -50,7 +50,7 @@ namespace EMo.Examples
 
             eventSource.InvokeNormalEvent(null);
             eventSource.InvokeNormalEvent(null);
-            
+
             Assert.Equal(2, eventSource.Raised().Event("NormalEvent").WithParams(eventSource, null).Count());
         }
     }

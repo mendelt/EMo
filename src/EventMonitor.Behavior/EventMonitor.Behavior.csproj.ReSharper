@@ -1,0 +1,5 @@
+<Configuration>
+  <NamespaceFolders>
+    <SkipFolder>DB678C60-0BEA-4863-8CAF-1E6294418BF8/d:TestHelpers</SkipFolder>
+  </NamespaceFolders>
+</Configuration>

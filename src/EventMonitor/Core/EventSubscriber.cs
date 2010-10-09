@@ -7,7 +7,7 @@ namespace EMo.Core
     /// <summary>
     /// Static methods that aid in generic event subscription
     /// </summary>
-    public class EventSubscriber
+    public static class EventSubscriber
     {
         /// <summary>
         /// Generates an eventhandler for an event of type eventSignature that calls RegisterEvent on recorder
@@ -38,7 +38,7 @@ namespace EMo.Core
 
             for(var index=0; index < parameters.Length; index++)
             {
-                // Push the object array onto the evaluation stackis 
+                // Push the object array onto the evaluation stack
                 ilGen.Emit(OpCodes.Ldloc_0);
                 // Push the array index to store our parameter in onto the evaluation stack
                 ilGen.Emit(OpCodes.Ldc_I4, index);
@@ -67,7 +67,7 @@ namespace EMo.Core
         /// <summary>
         /// Finds the Return Type of a Delegate.
         /// </summary>
-        public static Type GetDelegateReturnType(Type d)
+        private static Type GetDelegateReturnType(Type d)
         {
             var invoke = DelegateInvokeMethod(d);
             return invoke.ReturnType;
@@ -76,7 +76,7 @@ namespace EMo.Core
         /// <summary>
         /// Returns an Array of Types that make up a delegate's parameter signature.
         /// </summary>
-        public static Type[] GetDelegateParameterTypes(Type d)
+        private static Type[] GetDelegateParameterTypes(Type d)
         {
             var invoke = DelegateInvokeMethod(d);
 
@@ -94,7 +94,7 @@ namespace EMo.Core
         /// <summary>
         /// Returns an array of types appended with an EventRecorder reference at the beginning.
         /// </summary>
-        public static Type[] AppendParameterListThisReference(Type[] parameters)
+        private static Type[] AppendParameterListThisReference(Type[] parameters)
         {
             var newList = new Type[parameters.Length + 1];
 
@@ -108,26 +108,23 @@ namespace EMo.Core
             return newList;
         }
 
-
         /// <summary>
         /// Returns T/F Dependent on a Type Being a Delegate.
         /// </summary>
-        public static bool TypeIsDelegate(Type d)
+        private static bool TypeIsDelegate(Type d)
         {
             if (d.BaseType != typeof(MulticastDelegate))
                 return false;
 
             var invoke = d.GetMethod("Invoke");
 
-            if (invoke == null) return false;
-
-            return true;
+            return invoke != null;
         }
 
         /// <summary>
         /// Returns the MethodInfo for the Delegate's "Invoke" Method.
         /// </summary>
-        public static MethodInfo DelegateInvokeMethod(Type d)
+        private static MethodInfo DelegateInvokeMethod(Type d)
         {
             if (!TypeIsDelegate(d))
                 throw new ApplicationException("Type is not a Delegate!");
